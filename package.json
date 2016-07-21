@@ -1,0 +1,31 @@
+{
+  "name": "group_auth",
+  "version": "1.0.0",
+  "description": "Group Auth Project",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon ./bin/www"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rena-deane/group-project-auth.git"
+  },
+  "author": "Marcus, Rena, Ollie, Dan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rena-deane/group-project-auth/issues"
+  },
+  "homepage": "https://github.com/rena-deane/group-project-auth#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "handlebars": "^4.0.5",
+    "knex": "^0.11.8",
+    "passport": "^0.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.9.2",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.6.0"
+  }
+}
