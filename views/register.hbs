@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="A basic auth app.">
+  <meta name="keywords" content="Authorization, #TeamFun">
+  <meta name="author" content="Dan, Ollie, Marcus, Rena">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+</head>
+<body>
+  <div class="content">
+    <h1>Register</h1>
+    <h2>Please enter your details:<h2>
+    <form action="/user/new" method="POST">
+      <label for="username">Username:</label>
+      <input type="text" class="login-input" required placeholder="Username here...">
+      <label for="username">Password:</label>
+      <input type="password" class="login-input" required placeholder="Password here...">
+      <input type="password" class="login-input" required placeholder="Retype Password here...">
+      <button type="submit">Register!</button>
+    </form>
+    <a href="/"><button>Back</button></a>
+  </div>
+</body>
+</html>
