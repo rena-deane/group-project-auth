@@ -19,5 +19,15 @@ router.get('/user/:username', function(req, res, next) {
 
 router.post('/user', function(req, res, next) {
   console.log(req)
-  res.sendStatus(403)
+  res.sendStatus(200)
+})
+
+router.post('/user/new', function(req, res, next) {
+  console.log(req)
+  res.sendStatus(200)
+})
+
+router.post('/logout', function(req, res, next) {
+  console.log(req)
+  res.sendStatus(200)
 })
