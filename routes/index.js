@@ -16,3 +16,8 @@ router.get('/register', function(req, res, next) {
 router.get('/user/:username', function(req, res, next) {
   res.render('profile')
 }
+
+router.post('/user', function(req, res, next) {
+  console.log(req)
+  res.sendStatus(403)
+})
