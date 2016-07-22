@@ -10,5 +10,16 @@ module.exports = function(knex) {
           callback(err, null);
         });
     },
+
+    addUser: function (table, obj, callback) {
+      knex(table).returning('id').insert(obj)
+        .then(function(res) {
+          callback(null, res[0])
+        })
+        .catch(function(err){
+          callback(err, null)
+        });
+    }
+
   };
 };
