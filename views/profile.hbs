@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="A basic auth app.">
+  <meta name="keywords" content="Authorization, #TeamFun">
+  <meta name="author" content="Dan, Ollie, Marcus, Rena">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{this.username}}</title>
+</head>
+<body>
+  <div class="content">
+    <h1>Welcome, {{this.username}}</h1>
+    <h2>This is your super awesome account page!<h2>
+      <form method="POST" action="/logout">
+        <button type="submit">Logout</button>
+      </form>
+  </div>
+</body>
+</html>
