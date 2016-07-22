@@ -1,4 +1,5 @@
 var express = require('express')
+var passport = require('passport')
 var router = express.Router()
 var knex = require('../database/config')
 var db = require('../database/utils')(knex);
@@ -12,11 +13,13 @@ router.get('/login', function(req, res, next) {
   res.render('login', {message: 'Please enter your details:'})
 })
 
-router.get('/register', function(req, res, next) {
-  res.render('register')
-})
+router.post('/login', passport.authenticate('local', {
+  successRedirect: '/',
+  failureRedirect: '/logout'
+}))
 
-router.get('/user/:username', function(req, res, next) {
+router.get('/user', function(req, res, next) {
+  console.log('hi')
   res.render('profile')
 })
 
@@ -30,10 +33,18 @@ router.post('/user', function(req, res, next) {
       console.log('User added to the database')
     }
   })
+})
+
+router.get('/user/:username', function(req, res, next) {
+  res.render('profile')
+})
+
+router.get('/user/new', function(req, res, next) {
   res.render('login', {message: 'You have been added, please login'})
 })
 
-router.post('/user/new', function(req, res, next) {
+router.get('/logout', function(req, res, next) {
+  console.log('logged out')
   res.sendStatus(200)
 })
 
