@@ -15,9 +15,10 @@ router.get('/login', function(req, res, next) {
 })
 
 router.post('/login', passport.authenticate('local', {
-  successRedirect: '/',
   failureRedirect: '/logout'
-}))
+}), function(req, res, next) {
+  res.redirect('/user/' + req.body.username)
+})
 
 router.get('/user', function(req, res, next) {
   console.log('hi')
@@ -36,14 +37,14 @@ router.post('/user', function(req, res, next) {
       console.error(err)
     } else {
       console.log(resp)
-      res.redirect('/user/hi')
+      res.redirect('/user/' + req.body.username)
       console.log('User added to the database')
     }
   })
 })
 
 router.get('/user/:username', function(req, res, next) {
-  res.render('profile')
+  res.render('profile', { username: req.params.username })
 })
 
 router.get('/register', function(req, res, next) {
