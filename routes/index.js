@@ -1,7 +1,8 @@
 var express = require('express')
 var router = express.Router()
 var knex = require('../database/config')
-var db = require('../database/utils')(knex);
+var db = require('../database/utils')(knex)
+var CryptoJS = require('crypto-js')
 
 
 router.get('/', function(req, res, next) {
@@ -21,9 +22,13 @@ router.get('/user/:username', function(req, res, next) {
 })
 
 router.post('/user', function(req, res, next) {
-  console.log('name: ', req.body.username)
-  console.log('password: ', req.body.password)
-  db.addUser('users', req.body, function(err, res) {
+  var encryptedReq = req.body
+  console.log('name: ', encryptedReq.username)
+  encryptedReq.password = CryptoJS.AES.encrypt(encryptedReq.password.toString(), encryptedReq.username.toString())
+  encryptedReq.password = encryptedReq.password.toString()
+  console.log('password: ', encryptedReq.password)
+  console.log('encrypted password: ', encryptedReq.password)
+  db.addUser('users', encryptedReq, function(err, res) {
     if(err) {
       console.error(err)
     } else {
