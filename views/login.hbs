@@ -6,6 +6,7 @@
   <meta name="keywords" content="Authorization, #TeamFun">
   <meta name="author" content="Dan, Ollie, Marcus, Rena">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
   <title>Login</title>
 </head>
 <body>
@@ -13,13 +14,25 @@
     <h1>Login</h1>
     <h2>{{this.message}}</h2>
     <form action="/login" method="POST">
-      <label for="username">Username:</label>
-      <input type="text" class="login-input" name="username" required placeholder="Username here...">
-      <label for="username">Password:</label>
-      <input type="password" class="login-input" name="password" required placeholder="Password here...">
-      <button type="submit">Login!</button>
+
+      <div class="content-item">
+        {{!-- <label for="username">Username:</label> --}}
+        <input type="text" class="login-input" name="username" required placeholder="Username">
+      </div>
+
+      <div class="content-item">
+        {{!-- <label for="username">Password:</label> --}}
+        <input type="password" class="login-input" name="password" required placeholder="Password">
+      </div>
+
+      <div class="content-item">
+        <a href="/"><button>Back</button></a>
+        <button type="submit">Login!</button>
+      </div>
+
     </form>
-    <a href="/"><button>Back</button></a>
+
+
   </div>
 </body>
 </html>

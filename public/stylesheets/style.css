@@ -1,0 +1,60 @@
+/* Fonts!! :~); */
+
+@import 'https://fonts.googleapis.com/css?family=Harmattan|Lobster';
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 10px;
+  background: url('/images/skulls.png') ;
+}
+
+h1 {
+  font-family: 'Lobster', cursive;
+  font-size: 50px;
+}
+
+h2 {
+  font-family: 'Harmattan', sans-serif;
+  font-size: 2em;
+}
+
+button {
+  background-color: #89894a;
+  border-radius: 5px;
+  border: 0;
+  color: #ffffff;
+  font-size: 16px;
+  width: 8em;
+  height: 3em;
+  margin: 5px;
+}
+
+input {
+  border: 1px solid #89894a;
+  width: 250px;
+  height: 20px;
+  font-size: 20px;
+  padding: 5px 0;
+  text-align: center;
+}
+
+.content {
+  display:flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+.content-item {
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.password {
+  margin-bottom: 0;
+}

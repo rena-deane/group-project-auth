@@ -4,6 +4,7 @@ var router = express.Router()
 var knex = require('../database/config')
 var db = require('../database/utils')(knex)
 var CryptoJS = require('crypto-js')
+require('dotenv').config();
 
 
 router.get('/', function(req, res, next) {
@@ -27,7 +28,7 @@ router.get('/user', function(req, res, next) {
 router.post('/user', function(req, res, next) {
   var encryptedReq = req.body
   console.log('name: ', encryptedReq.username)
-  encryptedReq.password = CryptoJS.AES.encrypt(encryptedReq.password.toString(), encryptedReq.username.toString())
+  encryptedReq.password = CryptoJS.AES.encrypt(encryptedReq.password.toString(), process.env.SECRET_SALT)
   encryptedReq.password = encryptedReq.password.toString()
   console.log('password: ', encryptedReq.password)
   console.log('encrypted password: ', encryptedReq.password)
