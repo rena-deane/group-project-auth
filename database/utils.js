@@ -19,7 +19,16 @@ module.exports = function(knex) {
         .catch(function(err){
           callback(err, null)
         });
-    }
+    },
 
+    findOne: function(table, params, callback) {
+      knex(table).where(params)
+        .then(function(resp){
+          callback(null, resp[0]);
+        })
+        .catch(function(err){
+          callback(err, null);
+        });
+    },
   };
 };
