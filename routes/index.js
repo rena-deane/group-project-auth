@@ -22,10 +22,6 @@ router.get('/user/:username', function(req, res, next) {
 
 router.post('/user', function(req, res, next) {
   console.log(req)
-  res.sendStatus(200)
-})
-
-router.post('/user/new', function(req, res, next) {
   console.log('name: ', req.body.username)
   console.log('password: ', req.body.password)
   db.addUser('users', req.body, function(err, res) {
@@ -35,6 +31,10 @@ router.post('/user/new', function(req, res, next) {
       console.log('User added to the database')
     }
   })
+  res.sendStatus(200)
+})
+
+router.post('/user/new', function(req, res, next) {
   res.sendStatus(200)
 })
 
