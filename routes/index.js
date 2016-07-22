@@ -16,7 +16,7 @@ router.get('/login', function(req, res, next) {
 })
 
 router.post('/login', passport.authenticate('local', {
-  failureRedirect: '/logout'
+  failureRedirect: '/login'
 }), function(req, res, next) {
   res.redirect('/user/' + req.body.username)
 })
@@ -54,12 +54,12 @@ router.get('/register', function(req, res, next) {
 
 router.get('/logout', function(req, res, next) {
   console.log('logged out')
-  res.sendStatus(200)
+  res.redirect('/')
 })
 
 router.post('/logout', function(req, res, next) {
   console.log('logout route', req)
-  res.sendStatus(200)
+  res.redirect('/')
 })
 
 module.exports = router

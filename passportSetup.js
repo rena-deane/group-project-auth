@@ -3,12 +3,13 @@ var LocalStrategy = require('passport-local').Strategy
 var knex = require('./database/config')
 var db = require('./database/utils')(knex)
 var CryptoJS = require('crypto-js')
+require('dotenv').config()
 
 module.exports = function setup () {
   var strategy = new LocalStrategy(function(username, password, done) {
     db.findOne('users', { username }, function (err, user) {
       console.log(user)
-      var dePassword = CryptoJS.AES.decrypt(user.password, username).toString(CryptoJS.enc.Utf8)
+      var dePassword = CryptoJS.AES.decrypt(user.password, process.env.SECRET_SALT).toString(CryptoJS.enc.Utf8)
       console.log('dep', dePassword)
       var validUser = ((dePassword === password) && user)
       console.log(validUser)
