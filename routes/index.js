@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
 })
 
 router.get('/login', function(req, res, next) {
-  res.render('login')
+  res.render('login', {message: 'Please enter your details:'})
 })
 
 router.post('/login', passport.authenticate('local', {
@@ -40,9 +40,7 @@ router.get('/user/:username', function(req, res, next) {
 })
 
 router.get('/user/new', function(req, res, next) {
-  console.log(req)
-  res.render('register')
-  res.sendStatus(200)
+  res.render('login', {message: 'You have been added, please login'})
 })
 
 router.get('/logout', function(req, res, next) {
@@ -50,7 +48,8 @@ router.get('/logout', function(req, res, next) {
   res.sendStatus(200)
 })
 
-router.post('/user/new', function(req, res, next) {
+router.post('/logout', function(req, res, next) {
+  console.log('logout route', req)
   res.sendStatus(200)
 })
 
