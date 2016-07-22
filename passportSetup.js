@@ -2,14 +2,17 @@ var passport = require('passport')
 var LocalStrategy = require('passport-local').Strategy
 var knex = require('./database/config')
 var db = require('./database/utils')(knex)
-
-var users = [ { id: 1, username: 'username', password: 'password'} ]
+var CryptoJS = require('crypto-js')
 
 module.exports = function setup () {
   var strategy = new LocalStrategy(function(username, password, done) {
     db.findOne('users', { username }, function (err, user) {
       console.log(user)
-      return done(null, user)
+      var dePassword = CryptoJS.AES.decrypt(user.password, username).toString(CryptoJS.enc.Utf8)
+      console.log('dep', dePassword)
+      var validUser = ((dePassword === password) && user)
+      console.log(validUser)
+      return done(null, validUser)
     })
   })
 
@@ -20,8 +23,8 @@ module.exports = function setup () {
   })
 
   passport.deserializeUser(function(id, done) {
-    done(null, users.find(function (user) {
-      return user.id === id
-    }))
+    db.findOne('users', { id }, function (err, user) {
+      return done(null, user)
+    })
   })
 }

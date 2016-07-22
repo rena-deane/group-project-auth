@@ -32,7 +32,7 @@ test('getAll', (t) => {
 test('getAll', (t) => {
   t.ok(true)
 
-  const expected = { id: 1, username: 'dank', password:'password'};
+  const expected = { id: 1, username: 'dank', password:'password' };
 
   knex.migrate.rollback()
     .then(() => {
