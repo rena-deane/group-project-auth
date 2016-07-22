@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
 })
 
 router.get('/login', function(req, res, next) {
-  res.render('login')
+  res.render('login', {message: 'Please enter your details:'})
 })
 
 router.get('/register', function(req, res, next) {
@@ -21,7 +21,6 @@ router.get('/user/:username', function(req, res, next) {
 })
 
 router.post('/user', function(req, res, next) {
-  console.log(req)
   console.log('name: ', req.body.username)
   console.log('password: ', req.body.password)
   db.addUser('users', req.body, function(err, res) {
@@ -31,7 +30,7 @@ router.post('/user', function(req, res, next) {
       console.log('User added to the database')
     }
   })
-  res.sendStatus(200)
+  res.render('login', {message: 'You have been added, please login'})
 })
 
 router.post('/user/new', function(req, res, next) {
@@ -39,7 +38,7 @@ router.post('/user/new', function(req, res, next) {
 })
 
 router.post('/logout', function(req, res, next) {
-  console.log(req)
+  console.log('logout route', req)
   res.sendStatus(200)
 })
 
