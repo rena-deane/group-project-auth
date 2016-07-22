@@ -1,14 +1,16 @@
 var passport = require('passport')
 var LocalStrategy = require('passport-local').Strategy
+var knex = require('./database/config')
+var db = require('./database/utils')(knex)
 
 var users = [ { id: 1, username: 'username', password: 'password'} ]
 
 module.exports = function setup () {
   var strategy = new LocalStrategy(function(username, password, done) {
-    var user = users.find(function (user) {
-      return user.username === username && user.password === password
+    db.findOne('users', { username }, function (err, user) {
+      console.log(user)
+      return done(null, user)
     })
-    return done(null, user)
   })
 
   passport.use(strategy)
