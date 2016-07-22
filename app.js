@@ -1,14 +1,16 @@
 var express = require('express')
 var path = require('path')
 var bodyParser = require('body-parser')
+var jsonParser = bodyParser.json()
 var passport = require('passport')
 var session = require('express-session')
+var router = express.Router()
 
 var routes = require('./routes/index')
 var setupPassport = require('./passportSetup')
 var app = express()
 
-app.set('views' path.join(__dirname, 'views'))
+app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'hbs')
 
 app.use(bodyParser.json())
