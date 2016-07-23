@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon ./bin/www",
     "test": "tape test/*.js | tap-spec",
-    "database": "knex migrate:rollback && knex migrate:latest && knex seed:run"
+    "database": "knex migrate:rollback && knex migrate:latest"
   },
   "repository": {
     "type": "git",
